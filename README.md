@@ -1,53 +1,29 @@
-Build a FullStack App with Next.js, Supabase & Prisma | The Modern Dev by
-[AlterClass.io](https://alterclass.io).
+## initializing prisma
 
-- Learn to build this application step-by-step by following the FREE course on
-  [The Modern Dev](https://themodern.dev/).
+First we need add prisma as a dependency. Prisma is an ORM helps to scale database connection
 
-- Preview the app live [here](https://supa-vacation.vercel.app/).
-
-- Deploy the same app using Vercel:
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/AlterClassIO/supa-vacation&project-name=SupaVacation+by+The+Modern+Dev&repository-name=SupaVacation+by+The+Modern+Dev)
-
-[![SupaVacation](https://user-images.githubusercontent.com/4352286/152961498-0e7d1575-a2a2-4aae-93e0-a75e701cef06.png)](https://supa-vacation.vercel.app/)
-
-## Getting Started
-
-### 1. Clone the repository and install dependencies
-
-```
-git clone https://github.com/AlterClassIO/supa-vacation
-cd supa-vacation
-npm install
+```console
+yarn add -D prisma
+npx prisma init
 ```
 
-### 2. Configure your local environment
+then we need initialize prisma CLI, it will create a folder named as prisma and schema.prisma file inside, we will define connection to PostgreSQL database and data models within the file.
 
-Rename the `.env.example` file in this directory to `.env` (which
-will be ignored by Git):
+- @default(cuid()) : attribute that sets a default CUID value to it, so we don't need to set the id value ourselves when we create records, and it makes sure each record has a unique id value.
 
-```
-cp .env.local.example .env.local
-```
+## install prisma client
 
-Add your own values for all the environment variables.
+prisma client is like query builder generating javascript code tailored to data models.
 
-### 3. Start the application
-
-To run your site locally, use:
-
-```
-npm run dev
+```console
+yarn add @prisma/client
+npx prisma generate
 ```
 
-To run it in production mode, use:
+when we generate prisma, we can name initial migration as init then it will create sql file under prisma/migration folder
 
+```console
+npx prisma studio
 ```
-npm run build
-npm run start
-```
 
-## License
-
-[MIT](https://github.com/AlterClassIO/supa-vacation/blob/master/LICENSE)
+this will run the web app on browser at http://localhost/5555 and we can add row on the browser into database
