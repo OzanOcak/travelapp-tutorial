@@ -27,3 +27,33 @@ npx prisma studio
 ```
 
 this will run the web app on browser at http://localhost/5555 and we can add row on the browser into database
+
+## interacting with data in database
+
+we can get the data frm server and the page will be statically produced in the server
+
+```javascript
+import { PrismaClient } from "@prisma/client";
+
+const prisma_client = new PrismaClient();
+
+export async function getServerSideProps() {
+  const homes = await prisma_client.home.findMany();
+  return {
+    props: {
+      homes: JSON.parse(JSON.stringify(homes)),
+    },
+  };
+}
+```
+
+then we can pass the props and show them in the page
+
+```javascript
+export default function Home({ homes = [] }) {
+  return (
+    <Layout>
+         ...
+        <Grid homes={homes} />
+
+```
