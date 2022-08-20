@@ -57,3 +57,12 @@ export default function Home({ homes = [] }) {
         <Grid homes={homes} />
 
 ```
+
+## Enable Incremental Static Generation
+
+```console
+npm run build && npm run start
+```
+
+we can build the app and serve it on the port.
+**/homes/[id]** is statically build in server during build time so, if we add new home, we can not see the new home page. Thus we need to assign true to fallback within get StaticPath method.
