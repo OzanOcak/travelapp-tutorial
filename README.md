@@ -66,3 +66,13 @@ npm run build && npm run start
 
 we can build the app and serve it on the port.
 **/homes/[id]** is statically build in server during build time so, if we add new home, we can not see the new home page. Thus we need to assign true to fallback within get StaticPath method.
+
+## CRUD to db
+
+- Storage > Create Bucket > name it as "myBucket" > make it public > upload img
+
+- config next.config.js
+
+- Storage > Policies > New >Create from Scratch >pick crud ops > bucket_id=""
+
+- Setting> API ; env URLs
