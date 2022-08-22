@@ -8,6 +8,7 @@ import { Formik, Form } from "formik";
 import { Dialog, Transition } from "@headlessui/react";
 import { SparklesIcon, MailOpenIcon, XIcon } from "@heroicons/react/outline";
 import Input from "./Input";
+import { signIn } from "next-auth/react";
 
 const SignInSchema = Yup.object().shape({
   email: Yup.string()
@@ -92,7 +93,12 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
   };
 
   const signInWithGoogle = () => {
-    // TODO: Perform Google auth
+    toast.loading("Redirecting...");
+    setDisabled(true);
+    // Perform sign in
+    signIn("google", {
+      callbackUrl: window.location.href,
+    });
   };
 
   const closeModal = () => {

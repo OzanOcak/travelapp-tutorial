@@ -4,6 +4,7 @@ module.exports = {
     domains: [
       "oqjoiuoinscdxnizmkzn.supabase.co",
       "oqjoiuoinscdxnizmkzn.supabase.in",
+      "lh3.googleusercontent.com",
     ],
   },
 };
